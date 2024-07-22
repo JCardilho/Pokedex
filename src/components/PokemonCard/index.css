@@ -1,0 +1,9 @@
+.container {
+  width: fit-content;
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  align-items: end;
+  gap: 1.2em;
+  flex-wrap: true;
+}
