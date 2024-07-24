@@ -5,9 +5,9 @@ import "../PokemonCard/index";
 export const Skeletons = () => {
   return (
     <Grid wrap="wrap" container justifyContent={"center"} alignItems={"center"}>
-      {Array.from({ length: 500 }).map((item) => (
+      {Array.from({ length: 500 }).map((item, index) => (
         <Skeleton
-          key={`skeleton-${item}`}
+          key={`skeleton-${index}`}
           variant="rounded"
           width={"250px"}
           height={"200px"}

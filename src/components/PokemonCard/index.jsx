@@ -5,6 +5,7 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { Box, CardActionArea } from "@mui/material";
 import "./index.css";
+import { pokemonTypes } from "../../utils";
 
 export default function PokemonCard(pokemon) {
   return (
@@ -26,13 +27,7 @@ export default function PokemonCard(pokemon) {
               {pokemon.data.name}
             </Typography>
 
-            <div className="container">
-              {pokemon.data.types.map((data) => (
-                <Typography gutterBottom variant="caption" component="div">
-                  {data.type.name}
-                </Typography>
-              ))}
-            </div>
+            {pokemonTypes(pokemon.data.types)}
           </Box>
 
           {/*<Typography variant="body2" color="text.secondary">

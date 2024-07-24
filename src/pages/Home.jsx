@@ -1,13 +1,16 @@
-import { Container, Grid } from "@mui/material";
+import { Box, Container, Grid } from "@mui/material";
 import Navbar from "../components/Navbar";
 import PokemonCard from "../components/PokemonCard";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Skeletons } from "../components/Skeletons";
+import { useNavigate } from "react-router-dom";
 
-export const Home = () => {
+export const Home = ({setPokemonData}) => {
   const [pokemons, setPokemons] = useState([]);
   const [filteredPokemons, setFilteredPokemons] = useState();
+
+  const navigate = useNavigate()
 
   useEffect(() => {
     getPokemons();
@@ -27,7 +30,7 @@ export const Home = () => {
         });
         Promise.all(allpokemon).then((res) => {
           setPokemons(res);
-          console.log(res);
+          
         });
       })
       .catch((err) => console.log(err));
@@ -48,6 +51,11 @@ export const Home = () => {
     setFilteredPokemons(filteredPokemons);
   };
 
+  const pokemonPickHnadler = (pokemon) => {
+    setPokemonData(pokemon)
+    navigate("/profile")
+  }
+
   return (
     <div>
       <Navbar pokemonFilter={pokemonFilter} />
@@ -64,7 +72,10 @@ export const Home = () => {
           ) : (
             pokemons.map((pokemon, index) => (
               <Grid item xs={2} key={`pokemon-${index}`}>
-                <PokemonCard data={pokemon} />
+                <Box onClick={() => pokemonPickHnadler(pokemon)}>
+                  <PokemonCard data={pokemon} />
+                </Box>
+                
               </Grid>
             ))
           )}
