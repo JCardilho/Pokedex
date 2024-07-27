@@ -13,7 +13,7 @@ export default function PokemonTable({ pokemonData }) {
   const { height, weight } = pokemonData;
 
   return (
-    <TableContainer component={Paper} sx={{height: "fit-content"}}>
+    <TableContainer component={Paper} sx={{height: "fit-content", maxWidth: "250px", boxShadow: "none"}}>
       <Table aria-label="a dense table"  >
         {/*<TableHead>
           <TableRow>
@@ -24,12 +24,12 @@ export default function PokemonTable({ pokemonData }) {
         </TableHead>*/}
         <TableBody>
           <TableRow sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
-            <TableCell>Height</TableCell>
-            <TableCell>{height}</TableCell>
+            <TableCell>Height </TableCell>
+            <TableCell>{height +" cm" }</TableCell>
           </TableRow>
           <TableRow sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
-            <TableCell>weight</TableCell>
-            <TableCell>{weight}</TableCell>            
+            <TableCell>weight </TableCell>
+            <TableCell>{weight + " g"}</TableCell>            
           </TableRow>
           <TableRow sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
             <TableCell>Tipo</TableCell>
